@@ -1,8 +1,8 @@
-import express from 'express';
 import dotenv from 'dotenv';
-import routes from './routes/routes';
-
 dotenv.config(); 
+import express from 'express';
+
+import routes from './routes/routes';
 
 import pool from './database';
 

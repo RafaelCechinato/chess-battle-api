@@ -19,4 +19,8 @@ function errorHandler(e: unknown, res: Response, message = ""): Response {
     }
 }
 
-export { errorHandler };
+function errorHandlerElementNotFound(res: Response, message = ""): Response {
+    return res.status(401).json({ error: message });
+}
+
+export { errorHandler, errorHandlerElementNotFound };
