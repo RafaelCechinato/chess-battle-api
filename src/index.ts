@@ -3,13 +3,30 @@ dotenv.config();
 import express from 'express';
 
 import routes from './routes/routes';
-
+import cors from 'cors';
 import pool from './database';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cors());
+const allowedOrigins = [
+  'http://localhost:57566', // Seu frontend local
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // if (origin && allowedOrigins.includes(origin)) {
+      callback(null, true);
+    // } else {
+    //   callback(new Error('Not allowed by CORS'));
+    // }
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}));
+
 app.use('/api', routes);
 
 pool.connect()

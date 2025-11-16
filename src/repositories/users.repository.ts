@@ -95,7 +95,7 @@ export async function getUserByNameOrEmail(nameOrEmail: string) {
             return null;
         }
 
-        return result.rows[0];
+        return result.rows;
 
     } catch (error) {
         console.error("Erro ao buscar usuário:", error);
